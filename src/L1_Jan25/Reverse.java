@@ -15,7 +15,7 @@ public class Reverse {
 
 		Scanner scn = new Scanner(System.in);
 
-		int n = scn.nextInt();
+		int n = 1234 ;
 
 		int ans = 0;
 
