@@ -16,16 +16,27 @@ public class ArrayOps {
 	public static void main(String[] args) {
 
 		// int[] arr = takeInput() ;
-		int[] arr = { 10, 20, 30, 40 };
+		int[] arr = { 50, 60, 30, 40 };
 		display(arr);
 
 		// System.out.println(maximum(arr));
 		// System.out.println(linearSearch(arr, 80));
 		// System.out.println(binarySearch(arr, 80));
 
-		subarray(arr);
-		subarraySum2Loops(arr);
+		// subarray(arr);
+		// subarraySum2Loops(arr);
 		// subarraySum3Loops(arr);
+
+		// barGraph(arr);
+
+		// reverse(arr);
+		// rotate(arr, -40);
+		// int[] inv = inverse(arr);
+		// display(inv);
+
+		// display(inverse(arr));
+		insertionSort(arr);
+		display(arr);
 	}
 
 	public static int[] takeInput() {
@@ -144,6 +155,91 @@ public class ArrayOps {
 				System.out.println(si + "-" + ei + " : " + sum);
 
 			}
+		}
+
+	}
+
+	public static void barGraph(int[] arr) {
+
+		int max = maximum(arr);
+
+		for (int r = 1; r <= max; r++) {
+
+			for (int c = 0; c < arr.length; c++) {
+
+				if (r <= max - arr[c]) {
+					System.out.print("   ");
+				} else {
+					System.out.print("*  ");
+				}
+			}
+
+			System.out.println();
+		}
+	}
+
+	public static void reverse(int[] arr) {
+
+		int i = 0;
+		int j = arr.length - 1;
+
+		while (i <= j) {
+
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+
+			i++;
+			j--;
+		}
+
+	}
+
+	public static void rotate(int[] arr, int rot) {
+
+		rot = rot % arr.length;
+
+		if (rot < 0) {
+			rot = rot + arr.length;
+		}
+
+		for (int r = 1; r <= rot; r++) {
+			int temp = arr[arr.length - 1]; // last value store
+
+			for (int i = arr.length - 1; i >= 1; i--) { // shift
+				arr[i] = arr[i - 1];
+			}
+
+			arr[0] = temp; // 0th index correct value place
+		}
+	}
+
+	public static int[] inverse(int[] arr) {
+
+		int[] inv = new int[arr.length];
+
+		for (int i = 0; i < inv.length; i++) {
+
+			inv[arr[i]] = i;
+		}
+
+		return inv;
+	}
+
+	public static void insertionSort(int[] arr) {
+
+		for (int count = 1; count <= arr.length - 1; count++) {
+
+			int item = arr[count];
+
+			int j = count - 1;
+
+			while (j >= 0 && arr[j] > item) {
+				arr[j + 1] = arr[j];
+				j--;
+			}
+
+			arr[j + 1] = item;
 		}
 
 	}
