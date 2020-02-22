@@ -16,8 +16,8 @@ public class ArrayOps {
 	public static void main(String[] args) {
 
 		// int[] arr = takeInput() ;
-		int[] arr = { 50, 60, 30, 40 };
-		display(arr);
+		// int[] arr = { 50, 60, 30, 40 };
+		// display(arr);
 
 		// System.out.println(maximum(arr));
 		// System.out.println(linearSearch(arr, 80));
@@ -35,8 +35,19 @@ public class ArrayOps {
 		// display(inv);
 
 		// display(inverse(arr));
-		insertionSort(arr);
-		display(arr);
+		// insertionSort(arr);
+		// display(arr);
+
+		int[] arr = new int[100000];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] =  i;
+		}
+		
+		long start = System.currentTimeMillis();
+		bubbleSort(arr);
+		long end = System.currentTimeMillis();
+
+		System.out.println(end - start);
 	}
 
 	public static int[] takeInput() {
@@ -240,6 +251,55 @@ public class ArrayOps {
 			}
 
 			arr[j + 1] = item;
+		}
+
+	}
+
+	public static void bubbleSort(int[] arr) {
+
+		boolean flag  = true ;
+		
+		for (int count = 0; count <= arr.length - 2; count++) {
+
+			for (int j = 0; j <= arr.length - count - 2; j++) {
+
+				if (arr[j] > arr[j + 1]) {
+					
+					flag = false ;
+
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+
+			}
+			
+			if(flag)
+				break ;
+
+			// display(arr);
+		}
+	}
+
+	public static void selectionSort(int[] arr) {
+
+		for (int count = 0; count <= arr.length - 2; count++) {
+
+			int min = count;
+
+			for (int j = count + 1; j <= arr.length - 1; j++) {
+
+				if (arr[j] < arr[min]) {
+					min = j;
+				}
+			}
+
+			// smallest value index
+			int temp = arr[min];
+			arr[min] = arr[count];
+			arr[count] = temp;
+
+			display(arr);
 		}
 
 	}

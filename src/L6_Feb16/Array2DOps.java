@@ -16,15 +16,21 @@ public class Array2DOps {
 	public static void main(String[] args) {
 
 		// int[][] arr = takeInput() ;
-		int[][] arr = { { 10, 20, 30, 40 }, { 50, 60, 70, 80 }, { 90, 100, 110, 120 }, { 130, 140, 150, 160 } };
-		display(arr);
+		// int[][] arr = { { 10, 20, 30, 40 }, { 50, 60, 70, 80 }, { 90, 100, 110, 120
+		// }, { 130, 140, 150, 160 } };
+		// display(arr);
+		//
+		// System.out.println("WAVE DISPLAY");
+		// waveDisplay(arr);
+		// System.out.println();
+		//
+		// System.out.println("SPIRAL DISPLAY");
+		// spiralDisplay(arr);
 
-		System.out.println("WAVE DISPLAY");
-		waveDisplay(arr);
-		System.out.println();
+		int[][] one = { { 1, 2, 3 }, { 4, 5, 6 } };
+		int[][] two = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
 
-		System.out.println("SPIRAL DISPLAY");
-		spiralDisplay(arr);
+		display(matrixMultiplication(one, two));
 
 	}
 
@@ -123,6 +129,35 @@ public class Array2DOps {
 			minRow++;
 
 		}
+	}
+
+	public static int[][] matrixMultiplication(int[][] one, int[][] two) {
+
+		int r1 = one.length;
+		int c1 = one[0].length;
+		int r2 = two.length;
+		int c2 = two[0].length;
+
+		int[][] res = new int[r1][c2];
+
+		// logic ...
+
+		for (int i = 0; i < res.length; i++) {
+
+			for (int j = 0; j < res[0].length; j++) {
+
+				// i,j entry : fill following logic
+				int sum = 0;
+				for (int k = 0; k < c1; k++) {
+					int temp = one[i][k] * two[k][j];
+					sum = sum + temp;
+				}
+				res[i][j] = sum;
+			}
+		}
+
+		return res;
+
 	}
 
 }
