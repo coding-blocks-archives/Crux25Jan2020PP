@@ -1,5 +1,6 @@
 package L1_Jan25;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -37,4 +38,5 @@ public class Prime {
 		}
 
 	}
+
 }
