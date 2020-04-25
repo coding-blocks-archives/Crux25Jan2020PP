@@ -38,16 +38,19 @@ public class ArrayOps {
 		// insertionSort(arr);
 		// display(arr);
 
-		int[] arr = new int[100000];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] =  i;
-		}
-		
-		long start = System.currentTimeMillis();
-		bubbleSort(arr);
-		long end = System.currentTimeMillis();
+		// int[] arr = new int[100000];
+		// for (int i = 0; i < arr.length; i++) {
+		// arr[i] = i;
+		// }
 
-		System.out.println(end - start);
+		// long start = System.currentTimeMillis();
+		// bubbleSort(arr);
+		// long end = System.currentTimeMillis();
+
+		int[] arr = { 2, 3, -6, 1, 2, 3, -4, 5, -8 };
+		System.out.println(kadanes(arr));
+
+		// System.out.println(end - start);
 	}
 
 	public static int[] takeInput() {
@@ -170,6 +173,48 @@ public class ArrayOps {
 
 	}
 
+	public static void maxSubarraySum2Loops(int[] arr) {
+
+		int max = Integer.MIN_VALUE;
+
+		for (int si = 0; si < arr.length; si++) {
+
+			int sum = 0;
+
+			for (int ei = si; ei < arr.length; ei++) {
+
+				sum += arr[ei];
+
+				if (sum > max) {
+					max = sum;
+				}
+
+			}
+		}
+
+		System.out.println(max);
+
+	}
+
+	public static int kadanes(int[] arr) {
+
+		int sum = arr[0];
+		int max = arr[0];
+
+		for (int i = 1; i < arr.length; i++) {
+
+			// max sum which you can obtain when ur subarray ends at arr[i] value
+			sum = Math.max(sum + arr[i], arr[i]);
+
+			// you need to find max of all sum
+			if (sum > max) {
+				max = sum;
+			}
+		}
+
+		return max;
+	}
+
 	public static void barGraph(int[] arr) {
 
 		int max = maximum(arr);
@@ -257,15 +302,15 @@ public class ArrayOps {
 
 	public static void bubbleSort(int[] arr) {
 
-		boolean flag  = true ;
-		
+		boolean flag = true;
+
 		for (int count = 0; count <= arr.length - 2; count++) {
 
 			for (int j = 0; j <= arr.length - count - 2; j++) {
 
 				if (arr[j] > arr[j + 1]) {
-					
-					flag = false ;
+
+					flag = false;
 
 					int temp = arr[j];
 					arr[j] = arr[j + 1];
@@ -273,9 +318,9 @@ public class ArrayOps {
 				}
 
 			}
-			
-			if(flag)
-				break ;
+
+			if (flag)
+				break;
 
 			// display(arr);
 		}
