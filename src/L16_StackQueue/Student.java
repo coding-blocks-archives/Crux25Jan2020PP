@@ -1,4 +1,4 @@
-package L16_Stack;
+package L16_StackQueue;
 
 public class Student {
 
