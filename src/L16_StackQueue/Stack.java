@@ -2,8 +2,8 @@ package L16_StackQueue;
 
 public class Stack {
 
-	private int[] data;
-	private int tos;
+	protected int[] data;
+	protected int tos;
 
 	public Stack() {
 		data = new int[5];
