@@ -1,4 +1,4 @@
-package L19_March18;
+package L19_LL;
 
 /**
  * @author Garima Chhikara
@@ -627,6 +627,153 @@ public class LinkedList {
 			t = t.next;
 		}
 		System.out.println();
+
+	}
+
+	public void oddevenExtraSpace() {
+
+		LinkedList odd = new LinkedList();
+		LinkedList even = new LinkedList();
+
+		Node temp = this.head;
+		while (temp != null) {
+
+			if (temp.data % 2 == 0) {
+				even.addLast(temp.data);
+			} else {
+				odd.addLast(temp.data);
+			}
+
+			temp = temp.next;
+		}
+
+		if (even.size == 0) {
+
+			this.head = odd.head;
+			this.tail = odd.tail;
+			this.size = odd.size;
+
+		} else if (odd.size == 0) {
+
+			this.head = even.head;
+			this.tail = even.tail;
+			this.size = even.size;
+
+		} else {
+
+			odd.tail.next = even.head;
+			this.head = odd.head;
+			this.tail = even.tail;
+			this.size = odd.size + even.size;
+
+		}
+
+	}
+
+	public void oddeven() {
+
+		// odd head
+		Node ohead = null;
+
+		// even head
+		Node ehead = null;
+
+		// otemp : last node of odd ll
+		Node otemp = null;
+		Node etemp = null;
+
+		Node temp = head;
+
+		while (temp != null) {
+
+			if (temp.data % 2 == 0) {
+
+				if (ehead == null) {
+					ehead = temp;
+					etemp = temp;
+				} else {
+
+					etemp.next = temp;
+					etemp = temp;
+
+				}
+
+			} else {
+
+				if (ohead == null) {
+					ohead = temp;
+					otemp = temp;
+				} else {
+
+					otemp.next = temp;
+					otemp = temp;
+
+				}
+
+			}
+
+			temp = temp.next;
+		}
+
+		etemp.next = null;
+		otemp.next = null;
+
+		if (ehead == null) {
+
+			this.head = ohead;
+			this.tail = otemp;
+
+		} else if (ohead == null) {
+
+			this.head = ehead;
+			this.tail = etemp;
+
+		} else {
+
+			otemp.next = ehead;
+
+			this.head = ohead;
+			this.tail = etemp;
+		}
+
+	}
+
+	public LinkedList mergeTwoSortedLL(LinkedList other) {
+
+		LinkedList sorted = new LinkedList();
+
+		Node one = this.head;
+		Node two = other.head;
+
+		while (one != null && two != null) {
+
+			if (one.data < two.data) {
+				sorted.addLast(one.data);
+				one = one.next;
+			} else {
+				sorted.addLast(two.data);
+				two = two.next;
+			}
+
+		}
+
+		if (one == null) {
+
+			while (two != null) {
+				sorted.addLast(two.data);
+				two = two.next;
+			}
+		}
+
+		if (two == null) {
+
+			while (one != null) {
+				sorted.addLast(one.data);
+				one = one.next;
+			}
+		}
+
+		return sorted;
 
 	}
 

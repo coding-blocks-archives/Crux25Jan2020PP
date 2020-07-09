@@ -1,4 +1,4 @@
-package L19_March18;
+package L19_LL;
 
 public class LLClient {
 
@@ -11,12 +11,15 @@ public class LLClient {
 		list.addLast(30);
 		list.addLast(40);
 		list.addLast(50);
-		list.addLast(60);
-		list.addLast(70);
-		list.addLast(80);
+
+		LinkedList list1 = new LinkedList();
+
+		list1.addLast(5);
+		list1.addLast(7);
+		list1.addLast(45);
 		// list.addLast(90);
 
-		list.display();
+		// list.display();
 		// list.reversePointerRecursively();
 		// list.reverseDataRecursively();
 
@@ -31,6 +34,9 @@ public class LLClient {
 
 		// list.display();
 
-		list.createDummyListLoop();
+		// list.createDummyListLoop();
+
+		// list.oddeven();
+		list.mergeTwoSortedLL(list1).display();
 	}
 }

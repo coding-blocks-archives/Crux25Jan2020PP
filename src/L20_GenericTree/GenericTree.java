@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-
 /**
  * @author Garima Chhikara
  * @email garima.chhikara@codingblocks.com
@@ -385,6 +384,42 @@ public class GenericTree {
 				System.out.println();
 				primary = helper;
 				helper = new LinkedList<>();
+			}
+
+		}
+
+	}
+
+	public void levelorderZZ() {
+
+		int count = 0;
+
+		LinkedList<Node> p = new LinkedList<>();
+		LinkedList<Node> h = new LinkedList<>();
+
+		p.addFirst(root);
+
+		while (!p.isEmpty()) {
+
+			Node rn = p.removeFirst();
+
+			System.out.print(rn.data + " ");
+
+			if (count % 2 == 0) {
+				for (Node child : rn.children) {
+					h.addFirst(child);
+				}
+			} else {
+				for (int i = rn.children.size() - 1; i >= 0; i--) {
+					h.addFirst(rn.children.get(i));
+				}
+			}
+
+			if (p.isEmpty()) {
+				System.out.println();
+				count++;
+				p = h;
+				h = new LinkedList<Node>();
 			}
 
 		}

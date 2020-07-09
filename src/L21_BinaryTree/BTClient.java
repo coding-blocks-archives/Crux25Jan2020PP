@@ -47,7 +47,9 @@ public class BTClient {
 
 		// bt.isTreeBST();
 
-		bt.verticalOrderDisplay();
+		// bt.verticalOrderDisplay();
+
+		bt.printTillK(30, 2);
 
 	}
 

@@ -673,14 +673,76 @@ public class BinaryTree {
 			}
 
 		}
-		
-		ArrayList<Integer> keys = new ArrayList<Integer>(map.keySet()) ;
-		
-		Collections.sort(keys) ;
-		
-		for(int key : keys) {
+
+		ArrayList<Integer> keys = new ArrayList<Integer>(map.keySet());
+
+		Collections.sort(keys);
+
+		for (int key : keys) {
 			System.out.println(key + " -> " + map.get(key));
 		}
+	}
+
+	public void printTillK(int target, int k) {
+		printTillK(root, target, k);
+	}
+
+	private int printTillK(Node node, int target, int k) {
+
+		if (node == null) {
+			return -1;
+		}
+
+		if (node.data == target) {
+			printKDown(node, k);
+			return 0;
+		}
+
+		int ld = printTillK(node.left, target, k);
+
+		if (ld != -1) {
+
+			if (ld + 1 == k) {
+				System.out.print(node.data + " ");
+			} else {
+				printKDown(node.right, k - ld - 2);
+			}
+
+			return ld + 1;
+
+		}
+
+		int rd = printTillK(node.right, target, k);
+
+		if (rd != -1) {
+
+			if (rd + 1 == k) {
+				System.out.print(node.data + " ");
+			} else {
+				printKDown(node.left, k - rd - 2);
+			}
+
+			return rd + 1;
+
+		}
+
+		return -1;
+
+	}
+
+	private void printKDown(Node node, int k) {
+
+		if (node == null || k < 0) {
+			return;
+		}
+
+		if (k == 0) {
+			System.out.print(node.data + " ");
+		}
+
+		printKDown(node.left, k - 1);
+		printKDown(node.right, k - 1);
+
 	}
 
 }

@@ -29,6 +29,7 @@ public class GTClient {
 		// gt.display();
 		// gt.display2();
 		gt.levelorderLW2();
+		gt.levelorderZZ();
 
 	}
 
