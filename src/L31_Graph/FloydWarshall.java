@@ -1,4 +1,4 @@
-package GraphDS;
+package L31_Graph;
 
 /**
  * @author Garima Chhikara
