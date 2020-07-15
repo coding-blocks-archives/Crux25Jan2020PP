@@ -12,7 +12,7 @@ public class Mixtures {
 
 	public static void main(String[] args) {
 
-		int[] arr = { 13, 57, 43 };
+		int[] arr = { 40, 60, 20, 50, 45, 12, 34 };
 		// System.out.println(MixturesRecursion(arr, 0, arr.length - 1));
 
 		int[][] strg = new int[arr.length][arr.length];
